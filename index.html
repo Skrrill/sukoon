@@ -4,10 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sukoon — In-home personal training for women in Bengaluru</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23ec97b3' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M100,150 C78,118 82,78 100,48 C118,78 122,118 100,150 Z'/%3E%3Cpath d='M100,150 C78,118 82,78 100,48 C118,78 122,118 100,150 Z' transform='rotate(-40 100 150)'/%3E%3Cpath d='M100,150 C78,118 82,78 100,48 C118,78 122,118 100,150 Z' transform='rotate(40 100 150)'/%3E%3Cpath d='M56,150 Q100,178 144,150'/%3E%3C/g%3E%3C/svg%3E" />
 <meta name="description" content="One-on-one, bodyweight personal training for women in the calm of your own home. Across Bengaluru, any day of the week." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400,0,0;9..144,500,0,0;9..144,600,0,0&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root{
     --bg:#1b0f17;
@@ -76,8 +77,10 @@
     border-bottom:1px solid var(--line);
   }
   .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:var(--maxw);margin:0 auto}
-  .brand{display:flex;flex-direction:column;line-height:1}
-  .brand .name{font-family:var(--display);font-size:1.5rem;font-weight:600;letter-spacing:-.02em;color:var(--text)}
+  .brand{display:flex;flex-direction:row;align-items:center;gap:12px;line-height:1}
+  .brand-text{display:flex;flex-direction:column;line-height:1}
+  .brand-mark{height:50px;width:auto;color:#ec97b3;flex:none}
+  .brand .name{font-family:var(--display);font-size:1.45rem;font-weight:600;letter-spacing:-.02em;color:var(--text)}
   .brand .sub{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:3px}
   .nav-links{display:flex;gap:30px;align-items:center}
   .nav-links a{font-size:.92rem;font-weight:500;color:var(--text)}
@@ -213,6 +216,8 @@
   /* ---------- FOOTER ---------- */
   footer{background:var(--bg-deep);color:var(--muted);padding:46px 0 30px}
   .foot-inner{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+  .foot-brand{display:flex;align-items:center;gap:13px}
+  .foot-mark{height:34px;width:auto;flex:none}
   footer .name{font-family:var(--display);font-size:1.6rem;color:var(--text);font-weight:600}
   footer .sub{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;margin-top:4px}
   .foot-links{display:flex;gap:22px;font-size:.9rem}
@@ -246,8 +251,16 @@
 <header class="nav">
   <div class="nav-inner">
     <a class="brand" href="#top">
-      <span class="name">Sukoon</span>
-      <span class="sub">Home fitness for women</span>
+      <svg class="brand-mark" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M100,150 C78,118 82,78 100,48 C118,78 122,118 100,150 Z"/>
+        <path d="M100,150 C78,118 82,78 100,48 C118,78 122,118 100,150 Z" transform="rotate(-40 100 150)"/>
+        <path d="M100,150 C78,118 82,78 100,48 C118,78 122,118 100,150 Z" transform="rotate(40 100 150)"/>
+        <path d="M56,150 Q100,178 144,150"/>
+        <circle cx="100" cy="92" r="6" fill="#fff3f8" stroke="none"/>
+      </svg>
+      <span class="brand-text">
+        <span class="name">Sukoon</span>
+      </span>
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -551,9 +564,18 @@
 <footer>
   <div class="wrap">
     <div class="foot-inner">
-      <div>
-        <div class="name">Sukoon</div>
-        <div class="sub">Home fitness for women · Bengaluru</div>
+      <div class="foot-brand">
+        <svg class="foot-mark" viewBox="0 0 200 200" fill="none" stroke="#ec97b3" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M100,150 C78,118 82,78 100,48 C118,78 122,118 100,150 Z"/>
+          <path d="M100,150 C78,118 82,78 100,48 C118,78 122,118 100,150 Z" transform="rotate(-40 100 150)"/>
+          <path d="M100,150 C78,118 82,78 100,48 C118,78 122,118 100,150 Z" transform="rotate(40 100 150)"/>
+          <path d="M56,150 Q100,178 144,150"/>
+          <circle cx="100" cy="92" r="6" fill="#fff3f8" stroke="none"/>
+        </svg>
+        <div>
+          <div class="name">Sukoon</div>
+          <div class="sub">Home fitness for women · Bengaluru</div>
+        </div>
       </div>
       <div class="foot-links">
         <a href="#how">How it works</a>
