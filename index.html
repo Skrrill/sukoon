@@ -167,17 +167,18 @@
   .price-note{text-align:center;color:var(--muted);font-size:.86rem;margin-top:26px}
 
   /* ---------- ABOUT ---------- */
-  .about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:54px;align-items:center}
+  .about-stack{display:flex;flex-direction:column;gap:46px}
+  .about-intro{max-width:780px}
   .trainer-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 28px 56px -34px rgba(0,0,0,.7)}
+  .trainer-h{display:grid;grid-template-columns:minmax(240px,330px) 1fr;align-items:stretch}
   .trainer-photo{
-    position:relative;
+    position:relative;min-height:300px;
     background:
       radial-gradient(120% 120% at 20% 10%, rgba(226,163,156,.85), transparent 55%),
       radial-gradient(120% 120% at 90% 90%, rgba(159,181,146,.7), transparent 55%),
       linear-gradient(135deg, #3a2230, #160c12);
-    display:grid;place-items:center;padding:30px;
   }
-  .trainer-video{width:min(300px,74%);aspect-ratio:9/16;object-fit:cover;border-radius:20px;display:block;box-shadow:0 20px 44px -18px rgba(0,0,0,.65)}
+  .trainer-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
   .trainer-photo .photo-brand{text-align:center;line-height:1}
   .photo-mark{display:block;font-family:var(--display);font-size:1.9rem;font-weight:600;color:#fff;letter-spacing:-.01em}
   .photo-line{display:block;font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-top:9px}
@@ -236,6 +237,9 @@
   @media(max-width:860px){
     .steps,.plans{grid-template-columns:1fr}
     .feat-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+    .trainer-h{grid-template-columns:1fr}
+    .trainer-h .trainer-photo{min-height:340px}
+    .price-controls{flex-direction:column;align-items:stretch}
     .nav-links{
       display:none;position:absolute;top:100%;left:0;right:0;
       background:var(--bg);flex-direction:column;gap:0;padding:10px 24px 20px;border-bottom:1px solid var(--line);
@@ -462,14 +466,14 @@
 
 <!-- ABOUT -->
 <section class="section alt" id="about">
-  <div class="wrap about-grid">
-    <div>
+  <div class="wrap about-stack">
+    <div class="about-intro">
       <span class="eyebrow">Why train at home</span>
       <h2 style="font-size:clamp(2rem,4.4vw,2.9rem);color:var(--text);margin-top:14px">Made for women who'd rather skip the gym.</h2>
       <p style="color:var(--muted);margin-top:16px;font-size:1.08rem">Crowded floors, mirrors, waiting for equipment, the feeling of being watched. None of that helps you actually show up. Training at home takes all of it away.</p>
       <p style="color:var(--muted);margin-top:14px;font-size:1.08rem">You get a private, comfortable space, a schedule that bends around work and family, and a plan that meets your body where it is today. That's how a routine actually sticks.</p>
     </div>
-    <div class="trainer-card">
+    <div class="trainer-card trainer-h">
       <!-- Plush animation. Upload sukoon-trainer.mp4 and sukoon-poster.jpg to the same repo folder as this file. -->
       <div class="trainer-photo">
         <video class="trainer-video" autoplay muted loop playsinline poster="sukoon-poster.jpg">
@@ -480,7 +484,7 @@
         <span class="eyebrow">Your trainer</span>
         <h3>Five years of training, brought to your living room.</h3>
         <p>I've spent the last five years training seriously, strength work alongside combat sports, so I know first-hand what consistent, well-built training actually takes. I coach the way I train: simple, steady, and made to last.</p>
-        <p>For you, that means a plan shaped around your body and your goals, clear coaching on every movement, and simple nutrition guidance to support it. The aim is real strength and a body you feel good in, built at a healthy, sustainable pace, not chased through crash plans.</p>
+        <p>For you, that means a plan shaped around your body and your goals, clear coaching on every movement, and simple nutrition guidance to support it. The aim is real strength and a body you feel good in, built at a healthy, sustainable pace.</p>
         <div class="trainer-stats">
           <div class="tstat"><b>5+ yrs</b><span>training</span></div>
           <div class="tstat"><b>Combat</b><span>sports athlete</span></div>
