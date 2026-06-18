@@ -5,28 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sukoon — In-home personal training for women in Bengaluru</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23ec97b3' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M100,150 C78,118 82,78 100,48 C118,78 122,118 100,150 Z'/%3E%3Cpath d='M100,150 C78,118 82,78 100,48 C118,78 122,118 100,150 Z' transform='rotate(-40 100 150)'/%3E%3Cpath d='M100,150 C78,118 82,78 100,48 C118,78 122,118 100,150 Z' transform='rotate(40 100 150)'/%3E%3Cpath d='M56,150 Q100,178 144,150'/%3E%3C/g%3E%3C/svg%3E" />
-<meta name="description" content="One-on-one, bodyweight personal training for women in the calm of your own home. Across Bengaluru, any day of the week." />
+<meta name="description" content="One-on-one bodyweight personal training for women. At home in Bengaluru, or online anywhere in the world." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400,0,0;9..144,500,0,0;9..144,600,0,0&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --bg:#1b0f17;
-    --bg-2:#22131d;
-    --bg-deep:#140a10;
-    --card:#2a1825;
-    --card-2:#33202f;
-    --rose:#e2a39c;
-    --accent:#e486a4;
-    --accent-soft:#f1a8c1;
-    --accent-deep:#c9628a;
-    --sage:#9fb592;
-    --text:#f4e9ee;
-    --muted:#bca7b3;
-    --line:rgba(255,255,255,.10);
-    --radius:22px;
+    --bg:#2b1925;
+    --bg-2:#341f2d;
+    --bg-deep:#22131d;
+    --card:#3b2433;
+    --card-2:#47293c;
+    --rose:#e9b3b0;
+    --accent:#ef9cbb;
+    --accent-soft:#f7c2d6;
+    --accent-deep:#d2749a;
+    --sage:#a9c0a0;
+    --text:#f7edf1;
+    --muted:#cbb2c0;
+    --line:rgba(255,255,255,.12);
+    --radius:30px;
     --maxw:1140px;
-    --display:"Fraunces",Georgia,serif;
+    --display:"Playfair Display",Georgia,serif;
     --body:"Hanken Grotesk",system-ui,sans-serif;
   }
 
@@ -140,6 +140,13 @@
 
   /* ---------- PRICING ---------- */
   .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .price-controls{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:30px}
+  .mode-toggle{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px}
+  .mode-btn{font-family:var(--body);font-size:.92rem;font-weight:600;color:var(--muted);background:transparent;border:none;cursor:pointer;padding:.6rem 1.25rem;border-radius:999px;transition:all .18s ease}
+  .mode-btn.active{background:var(--accent);color:#2a1217}
+  .cur-select{font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:8px;font-weight:500}
+  .cur-select select{font-family:var(--body);font-size:.92rem;font-weight:600;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.55rem .8rem;cursor:pointer}
+  .cur-select select option{background:var(--card);color:var(--text)}
   .plan{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px;display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease}
   .plan:hover{transform:translateY(-6px);box-shadow:0 24px 48px -28px rgba(0,0,0,.65)}
   .plan.featured{background:linear-gradient(180deg,var(--card-2),var(--card));border:1.5px solid var(--accent)}
@@ -163,13 +170,14 @@
   .about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:54px;align-items:center}
   .trainer-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 28px 56px -34px rgba(0,0,0,.7)}
   .trainer-photo{
-    position:relative;aspect-ratio:21/7;
+    position:relative;
     background:
       radial-gradient(120% 120% at 20% 10%, rgba(226,163,156,.85), transparent 55%),
       radial-gradient(120% 120% at 90% 90%, rgba(159,181,146,.7), transparent 55%),
       linear-gradient(135deg, #3a2230, #160c12);
-    display:grid;place-items:center;
+    display:grid;place-items:center;padding:30px;
   }
+  .trainer-video{width:min(300px,74%);aspect-ratio:9/16;object-fit:cover;border-radius:20px;display:block;box-shadow:0 20px 44px -18px rgba(0,0,0,.65)}
   .trainer-photo .photo-brand{text-align:center;line-height:1}
   .photo-mark{display:block;font-family:var(--display);font-size:1.9rem;font-weight:600;color:#fff;letter-spacing:-.01em}
   .photo-line{display:block;font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-top:9px}
@@ -283,9 +291,9 @@
   <div class="wrap hero-inner">
     <span class="eyebrow">One-on-one training for women · Bengaluru</span>
     <h1>Train where you feel <em>most yourself</em>.</h1>
-    <p class="lede">Private, bodyweight personal training for women, in the calm of your own home. No gym, no crowd, no rush. Just you, a plan, and steady progress at your own pace.</p>
+    <p class="lede">Private, one-on-one bodyweight training for women. At home in Bengaluru, or online wherever you are. No gym, no crowd, no rush. Just you, a coach, and steady progress at your own pace.</p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="#book">Book a free online session</a>
+      <a class="btn btn-primary" href="#book">Book a free consultation</a>
       <a class="btn btn-wa" id="waHero" href="#" target="_blank" rel="noopener">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3 0-1.5.8-2.2 1-2.5.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2c.1.2.1.3 0 .5l-.4.6-.3.4c-.2.2-.4.4-.2.7.2.4.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.4.1.2.1.9-.1 1.4Z"/></svg>
         Chat on WhatsApp
@@ -294,7 +302,7 @@
     <div class="hero-meta">
       <span><i class="dot"></i> Any day, Mon–Sun</span>
       <span><i class="dot"></i> Bodyweight, no equipment to buy</span>
-      <span><i class="dot"></i> Across Bengaluru</span>
+      <span><i class="dot"></i> At home in Bengaluru · online anywhere</span>
     </div>
   </div>
 </section>
@@ -315,13 +323,13 @@
       </div>
       <div class="step">
         <span class="num">02</span>
-        <h3>Meet online, free</h3>
-        <p>We start with a free online session over video. You see how I coach, ask anything, and decide if it feels right, all before any in-home training.</p>
+        <h3>Free consultation</h3>
+        <p>We start with a free online consultation. You see how I coach, ask anything, and decide if it feels right, with no commitment.</p>
       </div>
       <div class="step">
         <span class="num">03</span>
         <h3>Train at home</h3>
-        <p>When you're comfortable, we move to in-home sessions in your own space. Build strength at a pace that feels good, never rushed.</p>
+        <p>Then we train: in your own home if you are in Bengaluru, or online from anywhere. Build strength at a pace that feels good, never rushed.</p>
       </div>
     </div>
   </div>
@@ -370,8 +378,8 @@
     <!-- Offer banner -->
     <div class="offer">
       <div>
-        <h3>Your first session is free, online.</h3>
-        <p>Start with a free online session over video. No cost, no pressure. See how I coach and decide if it's a fit before any in-home training.</p>
+        <h3>Your first consultation is free.</h3>
+        <p>Start with a free online consultation. No cost, no pressure. See how I coach and decide if it is a fit before anything else.</p>
       </div>
       <a class="btn btn-primary" id="waOffer" href="#" target="_blank" rel="noopener">Book the free session</a>
     </div>
@@ -382,13 +390,31 @@
       <p>Pay per session, or save with a monthly pack of 8 sessions (around two a week). No long contracts.</p>
     </div>
 
+    <div class="price-controls">
+      <div class="mode-toggle">
+        <button type="button" class="mode-btn active" data-mode="home">In-home · Bengaluru</button>
+        <button type="button" class="mode-btn" data-mode="online">Online · Worldwide</button>
+      </div>
+      <label class="cur-select">Show prices in
+        <select id="curSelect">
+          <option value="INR">₹ INR</option>
+          <option value="USD">$ USD</option>
+          <option value="EUR">€ EUR</option>
+          <option value="GBP">£ GBP</option>
+          <option value="AED">AED</option>
+          <option value="AUD">A$ AUD</option>
+          <option value="CAD">C$ CAD</option>
+          <option value="SGD">S$ SGD</option>
+        </select>
+      </label>
+    </div>
     <div class="plans">
       <div class="plan-wrap">
         <div class="plan">
           <span class="tier">Reset</span>
           <span class="len">60 minutes</span>
-          <div class="price">₹749 <small>/ session</small></div>
-          <div class="monthly">Monthly pack (8 sessions): <b>₹4,999</b></div>
+          <div class="price"><span class="amt" data-home="749" data-online="449"></span> <small>/ session</small></div>
+          <div class="monthly">Monthly pack (8 sessions): <b class="amt" data-home="4999" data-online="2999"></b></div>
           <ul>
             <li>Full-body bodyweight session</li>
             <li>Great for getting started</li>
@@ -403,8 +429,8 @@
           <span class="badge">Most chosen</span>
           <span class="tier">Restore</span>
           <span class="len">90 minutes</span>
-          <div class="price">₹999 <small>/ session</small></div>
-          <div class="monthly">Monthly pack (8 sessions): <b>₹6,999</b></div>
+          <div class="price"><span class="amt" data-home="999" data-online="599"></span> <small>/ session</small></div>
+          <div class="monthly">Monthly pack (8 sessions): <b class="amt" data-home="6999" data-online="3999"></b></div>
           <ul>
             <li>More time to build and recover</li>
             <li>Strength plus mobility work</li>
@@ -418,8 +444,8 @@
         <div class="plan">
           <span class="tier">Immerse</span>
           <span class="len">120 minutes</span>
-          <div class="price">₹1,299 <small>/ session</small></div>
-          <div class="monthly">Monthly pack (8 sessions): <b>₹8,999</b></div>
+          <div class="price"><span class="amt" data-home="1299" data-online="799"></span> <small>/ session</small></div>
+          <div class="monthly">Monthly pack (8 sessions): <b class="amt" data-home="8999" data-online="4999"></b></div>
           <ul>
             <li>A full, unhurried session</li>
             <li>Strength, mobility, and breath</li>
@@ -429,7 +455,8 @@
         </div>
       </div>
     </div>
-    <p class="price-note">All prices in INR. Travel within Bengaluru is included. Pay by UPI or cash, per session or per pack.</p>
+    <p class="price-note">In-home sessions include travel within Bengaluru. Online sessions are available worldwide. Pay by UPI, card, or cash.</p>
+    <p class="price-note" id="approxNote" style="display:none">Converted prices are approximate; sessions are billed in INR.</p>
   </div>
 </section>
 
@@ -443,13 +470,11 @@
       <p style="color:var(--muted);margin-top:14px;font-size:1.08rem">You get a private, comfortable space, a schedule that bends around work and family, and a plan that meets your body where it is today. That's how a routine actually sticks.</p>
     </div>
     <div class="trainer-card">
-      <!-- To add a real photo later, replace the whole .trainer-photo div below with:
-           <img src="trainer.jpg" alt="Your trainer" class="trainer-photo" /> -->
-      <div class="trainer-photo" aria-hidden="true">
-        <div class="photo-brand">
-          <span class="photo-mark">Sukoon</span>
-          <span class="photo-line">Calm · Strength · At home</span>
-        </div>
+      <!-- Plush animation. Upload sukoon-trainer.mp4 and sukoon-poster.jpg to the same repo folder as this file. -->
+      <div class="trainer-photo">
+        <video class="trainer-video" autoplay muted loop playsinline poster="sukoon-poster.jpg">
+          <source src="sukoon-trainer.mp4" type="video/mp4" />
+        </video>
       </div>
       <div class="trainer-body">
         <span class="eyebrow">Your trainer</span>
@@ -480,7 +505,7 @@
       </details>
       <details>
         <summary>Which parts of Bengaluru do you cover?</summary>
-        <p>Sessions are available across Bengaluru. Message me with your area and I'll confirm timing and availability. <span style="color:var(--accent)">[Edit: list the specific areas or radius you actually serve so this stays honest.]</span></p>
+        <p>In-home sessions are available across Bengaluru. Online sessions are available anywhere in the world, on your schedule. Message me and I will confirm timing.</p>
       </details>
       <details>
         <summary>How does payment work?</summary>
@@ -508,13 +533,13 @@
     <div class="contact-copy">
       <span class="eyebrow">Book a session</span>
       <h2>Let's find a time that works.</h2>
-      <p>The fastest way to start is WhatsApp. Or leave your details and I'll reach out to set up your free online session.</p>
+      <p>The fastest way to start is WhatsApp. Or leave your details and I will reach out to set up your free consultation.</p>
       <a class="btn btn-wa wa-big" id="waContact" href="#" target="_blank" rel="noopener">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3 0-1.5.8-2.2 1-2.5.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2c.1.2.1.3 0 .5l-.4.6-.3.4c-.2.2-.4.4-.2.7.2.4.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.4.1.2.1.9-.1 1.4Z"/></svg>
         Message on WhatsApp
       </a>
       <ul class="reassure">
-        <li>Your first session is free and online</li>
+        <li>Your first consultation is free and online</li>
         <li>I usually reply within a day</li>
         <li>No pressure, no contracts, cancel anytime</li>
       </ul>
@@ -585,7 +610,7 @@
       </div>
     </div>
     <div class="foot-bottom">
-      Private one-on-one bodyweight personal training for women, at home, across Bengaluru.<br />
+      Private one-on-one bodyweight training for women. At home in Bengaluru, or online anywhere.<br />
       Prices and availability may change. © <span id="year"></span> Sukoon.
     </div>
   </div>
@@ -603,8 +628,8 @@
 
   // Default messages
   document.getElementById("waHero").href    = waLink("Hi Sukoon, I'd like to know more about home training sessions.");
-  document.getElementById("waOffer").href   = waLink("Hi Sukoon, I'd like to book the free online session.");
-  document.getElementById("waContact").href = waLink("Hi Sukoon, I'd like to book my free online session.");
+  document.getElementById("waOffer").href   = waLink("Hi Sukoon, I'd like to book the free consultation.");
+  document.getElementById("waContact").href = waLink("Hi Sukoon, I'd like to book my free consultation.");
   document.getElementById("waFoot").href    = waLink("Hi Sukoon, I'd like to know more.");
 
   // Plan buttons -> prefilled WhatsApp
@@ -623,6 +648,49 @@
 
   // Year
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  // ---- Pricing: in-home/online toggle + currency conversion ----
+  // Approximate INR per 1 unit of currency (for display only; billed in INR).
+  var RATE = {INR:1, USD:83, EUR:90, GBP:105, AED:22.6, AUD:55, CAD:61, SGD:62};
+  var EURO = {DE:1,FR:1,ES:1,IT:1,NL:1,IE:1,PT:1,AT:1,BE:1,FI:1,GR:1,LU:1,SK:1,SI:1,LV:1,LT:1,EE:1,CY:1,MT:1};
+  var REGION_CUR = {IN:'INR',US:'USD',GB:'GBP',AE:'AED',AU:'AUD',CA:'CAD',SG:'SGD'};
+  var priceMode = 'home', priceCur = 'INR';
+
+  function detectRegion(){
+    try { return (navigator.language || 'en-IN').split('-')[1] || 'IN'; }
+    catch(e){ return 'IN'; }
+  }
+  function fmtMoney(inr){
+    var v = Math.round(inr / RATE[priceCur]);
+    try { return new Intl.NumberFormat(undefined,{style:'currency',currency:priceCur,maximumFractionDigits:0}).format(v); }
+    catch(e){ return priceCur + ' ' + v; }
+  }
+  function renderPrices(){
+    document.querySelectorAll('.amt').forEach(function(el){
+      el.textContent = fmtMoney(parseInt(el.getAttribute('data-' + priceMode), 10));
+    });
+    document.querySelectorAll('.mode-btn').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-mode') === priceMode);
+    });
+    var note = document.getElementById('approxNote');
+    if (note) note.style.display = (priceCur === 'INR') ? 'none' : 'block';
+    document.querySelectorAll('.plan-cta').forEach(function(btn){
+      var plan = btn.getAttribute('data-plan');
+      var label = (priceMode === 'home') ? 'in-home' : 'online';
+      btn.href = waLink("Hi Sukoon, I'm interested in the " + plan + " plan (" + label + ").");
+    });
+  }
+  (function initPricing(){
+    var region = detectRegion();
+    priceCur = REGION_CUR[region] || (EURO[region] ? 'EUR' : 'INR');
+    priceMode = (region === 'IN') ? 'home' : 'online';
+    var sel = document.getElementById('curSelect');
+    if (sel){ sel.value = priceCur; sel.addEventListener('change', function(){ priceCur = this.value; renderPrices(); }); }
+    document.querySelectorAll('.mode-btn').forEach(function(b){
+      b.addEventListener('click', function(){ priceMode = this.getAttribute('data-mode'); renderPrices(); });
+    });
+    renderPrices();
+  })();
 </script>
 </body>
 </html>
