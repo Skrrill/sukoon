@@ -233,6 +233,26 @@
   .foot-links a:hover{color:var(--accent)}
   .foot-bottom{margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);font-size:.78rem;opacity:.7;line-height:1.5}
 
+  /* ---------- ADDED: duration, training chips, form ---------- */
+  .price-controls.stack2{margin-top:14px}
+  .dur-save{font-size:.8rem;color:var(--muted);font-weight:500}
+  .plan .bill{font-size:.82rem;color:var(--muted);margin-top:2px}
+  .plan .price .was{font-family:var(--display);font-size:1.4rem;font-weight:500;color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px;opacity:.7;margin-right:12px}
+  .train-chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:6px}
+  .train-chip{position:relative;cursor:pointer;display:inline-block}
+  .train-chip input{position:absolute;opacity:0;inset:0;width:100%;height:100%;cursor:pointer;margin:0}
+  .train-chip span{display:inline-block;border:1.5px solid var(--line);background:rgba(255,255,255,.05);border-radius:999px;padding:8px 15px;font-size:.86rem;font-weight:600;color:var(--text);transition:.16s}
+  .train-chip input:checked + span{background:var(--accent);border-color:var(--accent);color:#2a1217}
+  .train-chip.locked{opacity:.38;pointer-events:none}
+  .phone-row{display:flex;gap:10px}
+  .phone-row .code-field{flex:0 0 96px;text-align:center;font-weight:600}
+  .phone-row .num-field{flex:1}
+  .form .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+  .form .actions .btn{flex:1;min-width:150px;margin-top:0}
+  .lead-preview{margin-top:16px;border:1px dashed rgba(241,168,193,.5);background:rgba(228,134,164,.08);border-radius:14px;padding:14px 16px}
+  .lead-preview .pl{font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+  .lead-preview .pm{font-size:.9rem;color:var(--text);white-space:pre-wrap;line-height:1.5}
+
   /* ---------- RESPONSIVE ---------- */
   @media(max-width:860px){
     .steps,.plans{grid-template-columns:1fr}
@@ -389,15 +409,15 @@
     </div>
 
     <div class="section-head" style="margin-top:64px">
-      <span class="eyebrow">Pricing</span>
-      <h2>Pick a session length.</h2>
-      <p>Pay per session, or save with a monthly pack of 8 sessions (around two a week). No long contracts.</p>
+      <span class="eyebrow">Coaching plans</span>
+      <h2>Pick a session, then a plan.</h2>
+      <p>The price is the same whether you train strength, yoga, mobility or combat. Choose a session length, then how long you commit. Longer plans cost less per month. Your first session is always free.</p>
     </div>
 
     <div class="price-controls">
-      <div class="mode-toggle">
-        <button type="button" class="mode-btn active" data-mode="home">In-home · Bengaluru</button>
-        <button type="button" class="mode-btn" data-mode="online">Online · Worldwide</button>
+      <div class="mode-toggle" id="modeToggle">
+        <button type="button" class="mode-btn active" data-mode="online">Online · Worldwide</button>
+        <button type="button" class="mode-btn" data-mode="home">In-home · Bengaluru</button>
       </div>
       <label class="cur-select">Show prices in
         <select id="curSelect">
@@ -412,19 +432,31 @@
         </select>
       </label>
     </div>
+
+    <div class="price-controls stack2">
+      <div class="mode-toggle" id="durToggle">
+        <button type="button" class="mode-btn active" data-dur="1">Monthly</button>
+        <button type="button" class="mode-btn" data-dur="3">3 months</button>
+        <button type="button" class="mode-btn" data-dur="6">6 months</button>
+        <button type="button" class="mode-btn" data-dur="12">Yearly</button>
+      </div>
+      <span class="dur-save" id="durSave"></span>
+    </div>
+
     <div class="plans">
       <div class="plan-wrap">
         <div class="plan">
           <span class="tier">Reset</span>
           <span class="len">60 minutes</span>
-          <div class="price"><span class="amt" data-home="749" data-online="449"></span> <small>/ session</small></div>
-          <div class="monthly">Monthly pack (8 sessions): <b class="amt" data-home="4999" data-online="2999"></b></div>
+          <div class="price"><span class="was" data-tier="reset"></span><span class="amt" data-tier="reset"></span> <small>/ month</small></div>
+          <div class="bill" data-bill="reset"></div>
+          <div class="monthly">8 sessions a month, about two a week. <b class="persess" data-tier="reset"></b></div>
           <ul>
-            <li>Full-body bodyweight session</li>
+            <li>A focused full session</li>
             <li>Great for getting started</li>
             <li>Warm-up, work, and stretch</li>
           </ul>
-          <a class="btn btn-ghost plan-cta" data-plan="Reset (60 min)" href="#" target="_blank" rel="noopener">Choose Reset</a>
+          <a class="btn btn-ghost plan-cta" data-plan="Reset" data-len="60 min" href="#" target="_blank" rel="noopener">Choose Reset</a>
         </div>
       </div>
 
@@ -433,14 +465,15 @@
           <span class="badge">Most chosen</span>
           <span class="tier">Restore</span>
           <span class="len">90 minutes</span>
-          <div class="price"><span class="amt" data-home="999" data-online="599"></span> <small>/ session</small></div>
-          <div class="monthly">Monthly pack (8 sessions): <b class="amt" data-home="6999" data-online="3999"></b></div>
+          <div class="price"><span class="was" data-tier="restore"></span><span class="amt" data-tier="restore"></span> <small>/ month</small></div>
+          <div class="bill" data-bill="restore"></div>
+          <div class="monthly">8 sessions a month, about two a week. <b class="persess" data-tier="restore"></b></div>
           <ul>
             <li>More time to build and recover</li>
             <li>Strength plus mobility work</li>
             <li>The sweet spot for most people</li>
           </ul>
-          <a class="btn btn-primary plan-cta" data-plan="Restore (90 min)" href="#" target="_blank" rel="noopener">Choose Restore</a>
+          <a class="btn btn-primary plan-cta" data-plan="Restore" data-len="90 min" href="#" target="_blank" rel="noopener">Choose Restore</a>
         </div>
       </div>
 
@@ -448,19 +481,19 @@
         <div class="plan">
           <span class="tier">Immerse</span>
           <span class="len">120 minutes</span>
-          <div class="price"><span class="amt" data-home="1299" data-online="799"></span> <small>/ session</small></div>
-          <div class="monthly">Monthly pack (8 sessions): <b class="amt" data-home="8999" data-online="4999"></b></div>
+          <div class="price"><span class="was" data-tier="immerse"></span><span class="amt" data-tier="immerse"></span> <small>/ month</small></div>
+          <div class="bill" data-bill="immerse"></div>
+          <div class="monthly">8 sessions a month, about two a week. <b class="persess" data-tier="immerse"></b></div>
           <ul>
             <li>A full, unhurried session</li>
             <li>Strength, mobility, and breath</li>
             <li>For deeper focus days</li>
           </ul>
-          <a class="btn btn-ghost plan-cta" data-plan="Immerse (120 min)" href="#" target="_blank" rel="noopener">Choose Immerse</a>
+          <a class="btn btn-ghost plan-cta" data-plan="Immerse" data-len="120 min" href="#" target="_blank" rel="noopener">Choose Immerse</a>
         </div>
       </div>
     </div>
-    <p class="price-note">In-home sessions include travel within Bengaluru. Online sessions are available worldwide. Pay by UPI, card, or cash.</p>
-    <p class="price-note" id="approxNote" style="display:none">Converted prices are approximate; sessions are billed in INR.</p>
+    <p class="price-note">Sessions are one-on-one. In-home is available in Bengaluru only, includes travel, and is billed in ₹. Online is available worldwide. Pay by UPI, card, or bank transfer.</p>
   </div>
 </section>
 
@@ -549,41 +582,81 @@
       </ul>
     </div>
 
-    <!-- FormSubmit works on static hosting and emails you each submission.
-         Replace YOUR_EMAIL below with the email you create for the business. -->
+    <!-- FormSubmit emails you each submission. Replace the email if needed. -->
     <form class="form" id="leadForm" action="https://formsubmit.co/sukoonblr@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="New Sukoon enquiry" />
       <input type="hidden" name="_captcha" value="false" />
       <input type="text" name="_honey" style="display:none" />
 
-      <label for="name">Your name</label>
-      <input id="name" name="name" type="text" placeholder="First name" required />
+      <label for="fname">Your name</label>
+      <input id="fname" name="name" type="text" placeholder="First name" required />
 
-      <label for="phone">Phone / WhatsApp number</label>
-      <input id="phone" name="phone" type="tel" placeholder="+91" required />
+      <label for="fcountry">Where are you based?</label>
+      <select id="fcountry" name="country"></select>
 
-      <label for="area">Area in Bengaluru</label>
-      <input id="area" name="area" type="text" placeholder="e.g. Koramangala, Indiranagar" />
+      <label for="fphone">WhatsApp number</label>
+      <div class="phone-row">
+        <input class="code-field" id="fcode" name="country_code" type="text" readonly value="+91" />
+        <input class="num-field" id="fphone" name="phone" type="tel" placeholder="Your number" required />
+      </div>
 
-      <label for="plan">Interested in</label>
-      <select id="plan" name="plan">
-        <option>Free online session</option>
+      <label>What would you like to train?</label>
+      <div class="train-chips" id="fTrain">
+        <label class="train-chip"><input type="checkbox" name="training" value="Strength"><span>Strength</span></label>
+        <label class="train-chip"><input type="checkbox" name="training" value="Yoga"><span>Yoga</span></label>
+        <label class="train-chip"><input type="checkbox" name="training" value="Mobility"><span>Mobility</span></label>
+        <label class="train-chip"><input type="checkbox" name="training" value="Boxing (technique)"><span>Boxing</span></label>
+        <label class="train-chip"><input type="checkbox" name="training" value="Kickboxing (technique)"><span>Kickboxing</span></label>
+        <label class="train-chip"><input type="checkbox" name="training" value="MMA conditioning"><span>MMA conditioning</span></label>
+        <label class="train-chip offline locked"><input type="checkbox" name="training" value="Boxing (sparring)" disabled><span>Boxing sparring</span></label>
+        <label class="train-chip offline locked"><input type="checkbox" name="training" value="Muay Thai pad work" disabled><span>Muay Thai</span></label>
+        <label class="train-chip offline locked"><input type="checkbox" name="training" value="BJJ fundamentals" disabled><span>BJJ</span></label>
+        <label class="train-chip offline locked"><input type="checkbox" name="training" value="Self-defense" disabled><span>Self-defense</span></label>
+      </div>
+      <p class="tiny" id="fTrainNote" style="text-align:left;margin-top:8px">Combat is taught as technique and conditioning online. Full contact unlocks with in-home.</p>
+
+      <label for="ftrainer">Trainer preference</label>
+      <select id="ftrainer" name="trainer">
+        <option>No preference</option>
+        <option>Female trainer</option>
+        <option>Male trainer</option>
+      </select>
+
+      <label for="fmode">How would you like to train?</label>
+      <select id="fmode" name="mode">
+        <option value="online">Online · anywhere</option>
+        <option value="home">In-home · Bengaluru</option>
+      </select>
+
+      <label for="fplan">Plan</label>
+      <select id="fplan" name="plan">
+        <option>Free first session</option>
         <option>Reset · 60 min</option>
         <option>Restore · 90 min</option>
         <option>Immerse · 120 min</option>
         <option>Not sure yet</option>
       </select>
 
-      <label for="contactpref">I'd prefer</label>
-      <select id="contactpref" name="contact_preference">
-        <option>A WhatsApp message</option>
-        <option>A callback</option>
+      <label for="fdur">Commitment</label>
+      <select id="fdur" name="duration">
+        <option value="1">Monthly</option>
+        <option value="3">3 months</option>
+        <option value="6">6 months</option>
+        <option value="12">Yearly</option>
       </select>
 
-      <label for="note">Anything else? (optional)</label>
-      <textarea id="note" name="note" placeholder="Your goal, best time to reach you, etc."></textarea>
+      <label for="fnote">Anything else? (optional)</label>
+      <textarea id="fnote" name="note" placeholder="Your goal, any injuries, best time to reach you..."></textarea>
 
-      <button class="btn btn-primary" type="submit">Book my free session</button>
+      <div class="lead-preview">
+        <div class="pl">Your message</div>
+        <div class="pm" id="leadPreview"></div>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn-wa" id="waSubmit" href="#" target="_blank" rel="noopener" style="justify-content:center">Continue on WhatsApp</a>
+        <button class="btn btn-primary" type="submit">Send by email</button>
+      </div>
       <p class="tiny">Your details are only used to contact you about training. No spam.</p>
     </form>
   </div>
@@ -653,48 +726,186 @@
   // Year
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // ---- Pricing: in-home/online toggle + currency conversion ----
-  // Approximate INR per 1 unit of currency (for display only; billed in INR).
-  var RATE = {INR:1, USD:83, EUR:90, GBP:105, AED:22.6, AUD:55, CAD:61, SGD:62};
-  var EURO = {DE:1,FR:1,ES:1,IT:1,NL:1,IE:1,PT:1,AT:1,BE:1,FI:1,GR:1,LU:1,SK:1,SI:1,LV:1,LT:1,EE:1,CY:1,MT:1};
-  var REGION_CUR = {IN:'INR',US:'USD',GB:'GBP',AE:'AED',AU:'AUD',CA:'CAD',SG:'SGD'};
-  var priceMode = 'home', priceCur = 'INR';
+  // ---- Localized pricing (hand-set per market, NOT converted) ----
+  // Monthly base = 8 sessions/month. Online is worldwide; in-home is Bengaluru (INR) only.
+  var SYM = {INR:'₹',USD:'$',EUR:'€',GBP:'£',AED:'AED ',AUD:'A$',CAD:'C$',SGD:'S$'};
+  var ONLINE = {
+    INR:{reset:4999, restore:6499, immerse:7999},
+    USD:{reset:149,  restore:199,  immerse:249},
+    EUR:{reset:149,  restore:189,  immerse:239},
+    GBP:{reset:129,  restore:169,  immerse:209},
+    AED:{reset:449,  restore:599,  immerse:749},
+    AUD:{reset:219,  restore:289,  immerse:359},
+    CAD:{reset:199,  restore:269,  immerse:329},
+    SGD:{reset:199,  restore:259,  immerse:319}
+  };
+  var HOME_INR = {reset:6999, restore:8499, immerse:9999}; // in-home, Bengaluru, INR only
+  var DUR = {1:0, 3:0.10, 6:0.15, 12:0.20}; // discount off monthly rate
+
+  var priceMode='online', priceCur='INR', priceDur=1;
 
   function detectRegion(){
-    try { return (navigator.language || 'en-IN').split('-')[1] || 'IN'; }
-    catch(e){ return 'IN'; }
+    try{ return (navigator.language||'en-IN').split('-')[1]||'IN'; }catch(e){ return 'IN'; }
   }
-  function fmtMoney(inr){
-    var v = Math.round(inr / RATE[priceCur]);
-    try { return new Intl.NumberFormat(undefined,{style:'currency',currency:priceCur,maximumFractionDigits:0}).format(v); }
-    catch(e){ return priceCur + ' ' + v; }
+  var REGION_CUR={IN:'INR',US:'USD',GB:'GBP',AE:'AED',AU:'AUD',CA:'CAD',SG:'SGD'};
+  var EURO={DE:1,FR:1,ES:1,IT:1,NL:1,IE:1,PT:1,AT:1,BE:1,FI:1,GR:1,LU:1,SK:1,SI:1,LV:1,LT:1,EE:1,CY:1,MT:1};
+
+  function baseFor(tier){
+    if(priceMode==='home') return HOME_INR[tier];
+    return ONLINE[priceCur][tier];
   }
+  function curFor(){ return priceMode==='home' ? 'INR' : priceCur; }
+  function money(n){
+    var c=curFor(); var v=Math.round(n);
+    try{ return new Intl.NumberFormat(undefined,{style:'currency',currency:c,maximumFractionDigits:0}).format(v); }
+    catch(e){ return SYM[c]+v.toLocaleString(); }
+  }
+  function effMonthly(tier){ return Math.round(baseFor(tier)*(1-DUR[priceDur])); }
+
   function renderPrices(){
-    document.querySelectorAll('.amt').forEach(function(el){
-      el.textContent = fmtMoney(parseInt(el.getAttribute('data-' + priceMode), 10));
+    document.querySelectorAll('.amt[data-tier]').forEach(function(el){
+      el.textContent = money(effMonthly(el.getAttribute('data-tier')));
     });
-    document.querySelectorAll('.mode-btn').forEach(function(b){
-      b.classList.toggle('active', b.getAttribute('data-mode') === priceMode);
+    document.querySelectorAll('.bill[data-bill]').forEach(function(el){
+      var tier=el.getAttribute('data-bill');
+      if(priceDur==1){ el.textContent='Billed monthly, cancel anytime.'; }
+      else{ el.textContent='Billed '+money(effMonthly(tier)*priceDur)+' for '+priceDur+' months.'; }
     });
-    var note = document.getElementById('approxNote');
-    if (note) note.style.display = (priceCur === 'INR') ? 'none' : 'block';
+    document.querySelectorAll('.persess[data-tier]').forEach(function(el){
+      el.textContent='That\u2019s '+money(effMonthly(el.getAttribute('data-tier'))/8)+' a session.';
+    });
+    document.querySelectorAll('.was[data-tier]').forEach(function(el){
+      var tier=el.getAttribute('data-tier');
+      if(priceDur==1){ el.textContent=''; el.style.display='none'; }
+      else{ el.style.display='inline'; el.textContent=money(baseFor(tier)); }
+    });
+    document.querySelectorAll('#modeToggle .mode-btn').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-mode')===priceMode); });
+    document.querySelectorAll('#durToggle .mode-btn').forEach(function(b){ b.classList.toggle('active', +b.getAttribute('data-dur')===priceDur); });
+    var save=document.getElementById('durSave');
+    save.textContent = priceMode==='home' ? 'In-home is Bengaluru only, billed in ₹.' : (priceDur>1 ? 'Longer plans save you '+(DUR[priceDur]*100)+'% a month.' : 'Commit longer to pay less per month.');
+    var sel=document.getElementById('curSelect'); if(sel){ sel.disabled=(priceMode==='home'); sel.style.opacity=priceMode==='home'?.5:1; }
+    // plan CTAs -> prefilled WhatsApp with the live price
     document.querySelectorAll('.plan-cta').forEach(function(btn){
-      var plan = btn.getAttribute('data-plan');
-      var label = (priceMode === 'home') ? 'in-home' : 'online';
-      btn.href = waLink("Hi Sukoon, I'm interested in the " + plan + " plan (" + label + ").");
+      var tier=btn.getAttribute('data-plan'); var len=btn.getAttribute('data-len');
+      var key=tier.toLowerCase();
+      var durTxt = priceDur==1 ? 'monthly' : (priceDur+'-month');
+      var modeTxt = priceMode==='home' ? 'in-home in Bengaluru' : 'online';
+      var msg = "Hi Sukoon, I'd like the "+tier+" plan ("+len+"), "+durTxt+", "+modeTxt+". That's "+money(effMonthly(key))+"/month. Can we start with my free first session?";
+      btn.href = waLink(msg);
     });
   }
+
   (function initPricing(){
-    var region = detectRegion();
+    var region=detectRegion();
     priceCur = REGION_CUR[region] || (EURO[region] ? 'EUR' : 'INR');
-    priceMode = (region === 'IN') ? 'home' : 'online';
-    var sel = document.getElementById('curSelect');
-    if (sel){ sel.value = priceCur; sel.addEventListener('change', function(){ priceCur = this.value; renderPrices(); }); }
-    document.querySelectorAll('.mode-btn').forEach(function(b){
-      b.addEventListener('click', function(){ priceMode = this.getAttribute('data-mode'); renderPrices(); });
+    priceMode = (region==='IN') ? 'home' : 'online';
+    var sel=document.getElementById('curSelect');
+    if(sel){ sel.value=priceCur; sel.addEventListener('change', function(){ priceCur=this.value; renderPrices(); }); }
+    document.querySelectorAll('#modeToggle .mode-btn').forEach(function(b){
+      b.addEventListener('click', function(){ priceMode=this.getAttribute('data-mode'); renderPrices(); });
+    });
+    document.querySelectorAll('#durToggle .mode-btn').forEach(function(b){
+      b.addEventListener('click', function(){ priceDur=+this.getAttribute('data-dur'); renderPrices(); });
     });
     renderPrices();
   })();
+
+  // ---- Booking form: country code, training type, trainer, auto message ----
+  // [name, dial, currency, isIndia]
+  var COUNTRIES=[
+    ["India","+91","INR",true],["United States","+1","USD",false],["United Kingdom","+44","GBP",false],
+    ["Canada","+1","CAD",false],["Australia","+61","AUD",false],["United Arab Emirates","+971","AED",false],
+    ["Singapore","+65","SGD",false],["Germany","+49","EUR",false],["France","+33","EUR",false],
+    ["Spain","+34","EUR",false],["Netherlands","+31","EUR",false],["Ireland","+353","EUR",false],
+    ["New Zealand","+64","AUD",false],["Saudi Arabia","+966","USD",false],["Qatar","+974","USD",false],
+    ["Other / not listed","","USD",false]
+  ];
+  var fCountry=document.getElementById('fcountry');
+  if(fCountry){
+    COUNTRIES.forEach(function(c,i){ var o=document.createElement('option'); o.value=i; o.textContent=c[0]; fCountry.appendChild(o); });
+
+    var fCode=document.getElementById('fcode'), fMode=document.getElementById('fmode');
+    var fName=document.getElementById('fname'), fPlan=document.getElementById('fplan');
+    var fDur=document.getElementById('fdur'), fTrainer=document.getElementById('ftrainer');
+    var fNote=document.getElementById('fnote'), fPhone=document.getElementById('fphone');
+    var preview=document.getElementById('leadPreview'), waSubmit=document.getElementById('waSubmit');
+    var offlineChips=document.querySelectorAll('#fTrain .train-chip.offline');
+
+    function selectedTraining(){
+      return Array.prototype.slice.call(document.querySelectorAll('#fTrain input:checked')).map(function(i){return i.value;});
+    }
+    function listText(arr){
+      if(arr.length===0) return 'what you suggest';
+      if(arr.length===1) return arr[0].toLowerCase();
+      return arr.slice(0,-1).map(function(s){return s.toLowerCase();}).join(', ')+' and '+arr[arr.length-1].toLowerCase();
+    }
+    function country(){ return COUNTRIES[+fCountry.value]; }
+    function planKey(){
+      var p=fPlan.value;
+      if(p.indexOf('Reset')===0) return 'reset';
+      if(p.indexOf('Restore')===0) return 'restore';
+      if(p.indexOf('Immerse')===0) return 'immerse';
+      return null;
+    }
+    function quote(){
+      var k=planKey(); if(!k) return '';
+      var home=(fMode.value==='home');
+      var cur=home?'INR':country()[2];
+      var base=home?HOME_INR[k]:(ONLINE[cur]?ONLINE[cur][k]:ONLINE.USD[k]);
+      var d=DUR[+fDur.value]||0; var eff=Math.round(base*(1-d));
+      var sym=SYM[cur]||'';
+      return sym+eff.toLocaleString()+'/month';
+    }
+    function planText(){
+      var p=fPlan.value;
+      if(p==='Free first session') return 'the free first session';
+      if(p==='Not sure yet') return 'a plan (still deciding which)';
+      var durMap={"1":"monthly","3":"3-month","6":"6-month","12":"yearly"};
+      var q=quote();
+      return 'the '+p.replace(' · ',' (')+') '+durMap[fDur.value]+' plan'+(q?' ('+q+')':'');
+    }
+    function trainerText(){
+      var t=fTrainer.value;
+      if(t==='No preference') return 'no trainer preference';
+      return 'a '+t.replace(' trainer','').toLowerCase()+' trainer';
+    }
+    function buildMsg(){
+      var name=(fName.value.trim()||'there');
+      var modeTxt=(fMode.value==='home')?'in-home in Bengaluru':'online';
+      var m='Hi Sukoon. I\'m '+name+' from '+country()[0]+'. ';
+      m+='I\'d like '+planText()+' for '+listText(selectedTraining())+', '+modeTxt+', with '+trainerText()+'.';
+      var note=fNote.value.trim(); if(note) m+='\n\nAbout me: '+note;
+      m+='\n\nLooking forward to my free first session.';
+      return m;
+    }
+    function syncOffline(){
+      var home=(fMode.value==='home');
+      offlineChips.forEach(function(ch){
+        var input=ch.querySelector('input');
+        ch.classList.toggle('locked', !home);
+        input.disabled=!home;
+        if(!home) input.checked=false;
+      });
+      document.getElementById('fTrainNote').textContent = home
+        ? 'Full-contact combat is available in-home in Bengaluru.'
+        : 'Combat is taught as technique and conditioning online. Full contact unlocks with in-home.';
+    }
+    function refresh(){
+      fCode.value=country()[1]||'+';
+      // if in-home chosen, nudge country to India context for the code
+      syncOffline();
+      var msg=buildMsg();
+      preview.textContent=msg;
+      waSubmit.href=waLink(msg);
+    }
+
+    fCountry.addEventListener('change', refresh);
+    fMode.addEventListener('change', refresh);
+    [fName,fPhone,fPlan,fDur,fTrainer,fNote].forEach(function(el){ el.addEventListener('input', refresh); el.addEventListener('change', refresh); });
+    document.querySelectorAll('#fTrain input').forEach(function(i){ i.addEventListener('change', refresh); });
+
+    refresh();
+  }
 </script>
 </body>
 </html>
