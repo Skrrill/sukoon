@@ -249,8 +249,8 @@
   .phone-row{display:flex;gap:10px}
   .phone-row .code-field{flex:0 0 96px;text-align:center;font-weight:600}
   .phone-row .num-field{flex:1}
-  .form .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
-  .form .actions .btn{flex:1;min-width:150px;margin-top:0}
+  .form .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .form .actions .btn{flex:0 0 auto;width:auto;min-width:0;margin-top:0;padding:.72rem 1.4rem;font-size:.92rem;white-space:nowrap}
   .lead-preview{margin-top:16px;border:1px dashed rgba(241,168,193,.5);background:rgba(228,134,164,.08);border-radius:14px;padding:14px 16px}
   .lead-preview .pl{font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
   .lead-preview .pm{font-size:.9rem;color:var(--text);white-space:pre-wrap;line-height:1.5}
@@ -656,8 +656,11 @@
       </div>
 
       <div class="actions">
-        <a class="btn btn-wa" id="waSubmit" href="#" target="_blank" rel="noopener" style="justify-content:center">Continue on WhatsApp</a>
-        <button class="btn btn-primary" type="submit">Send by email</button>
+        <a class="btn btn-wa" id="waSubmit" href="#" target="_blank" rel="noopener">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3 0-1.5.8-2.2 1-2.5.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2c.1.2.1.3 0 .5l-.4.6-.3.4c-.2.2-.4.4-.2.7.2.4.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.4.1.2.1.9-.1 1.4Z"/></svg>
+          WhatsApp
+        </a>
+        <button class="btn btn-primary" type="submit">Email</button>
       </div>
       <p class="tiny">Your details are only used to contact you about training. No spam.</p>
     </form>
